@@ -22,7 +22,7 @@
     
     
     // Do any additional setup after loading the view from its nib.
-    
+    self.navigationItem.title = muro.nome;
     // titulo da NavigationBar é o nome do muro
     self.lblTitle.text = muro.nome;
     // atualiza o texto das views
@@ -42,12 +42,12 @@
 }
 
 
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue {
+
 }
 
 

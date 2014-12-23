@@ -7,7 +7,6 @@
 //
 
 #import "ThirdViewController.h"
-
 #import "MuroService.h"
 #import "Muro.h"
 #import "CustomCell.h"
@@ -23,20 +22,25 @@
 @synthesize tableView;
 @synthesize Muros;
 @synthesize tipo;
-
+@synthesize progress;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     
     //titulo
-    self.title =@"Muros";
+    self.title =@"Artes";
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
+
     
     //busca os muros
     
     self.tipo =@"prontos";
+    
+    // ajusta o scroll da table view
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     [self atualizar];
 }
 
@@ -84,7 +88,7 @@
     
     // Cria a célula desta linha da tabela
     
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"CustomCell";
     
     CustomCell *cell = (CustomCell*) [self.tableView
                                     
@@ -92,7 +96,7 @@
     
     if (cell == nil) {
         
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"MuroCell" owner:self options:nil]
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:self options:nil]
                 
                 objectAtIndex:0];
         
@@ -116,21 +120,15 @@
         if ([[segue identifier] isEqualToString:@"detail"]){
         Muro *selectedMuro = [self.Muros objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
             
-            DetalhesMuroViewController *detailVC = segue.destinationViewController;
+           DetalhesMuroViewController *detailVC = segue.destinationViewController;
+      //   DetalhesMuroViewController *detailVC = [[DetalhesMuroViewController alloc] init];
+            
           detailVC.muro = selectedMuro;
+           // [self.navigationController pushViewController:detailVC animated:YES];
     }
- 
- 
-
-
-
-
-
-
-
-    
-
-
-
-
+    }
+        - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+            [self performSegueWithIdentifier:@"detail"
+                                      sender:self];
+    }
 @end

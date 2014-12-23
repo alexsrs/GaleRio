@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSMutableArray *Muros;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *progress;
 // variavel para guardar o tipo de muro selecionado
 @property (nonatomic, retain) NSString *tipo;
 

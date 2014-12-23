@@ -9,16 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "Muro.h"
 #import "DownloadImageView.h"
+#import "ThirdViewController.h"
 
-@interface DetalhesMuroViewController : UIViewController
-    
+@interface DetalhesMuroViewController : UIViewController     
+
+@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnVoltar;
 @property (nonatomic, retain) Muro *muro;
 @property (retain, nonatomic) IBOutlet DownloadImageView *img;
 @property (retain, nonatomic) IBOutlet UITextView *tDesc;
 @property (nonatomic, strong) IBOutlet UIView *view;
 
-
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue;
 @end
